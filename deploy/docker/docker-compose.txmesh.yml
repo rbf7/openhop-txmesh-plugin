@@ -1,0 +1,32 @@
+services:
+  openhop-txmesh:
+    build:
+      context: .
+      args:
+        VERSION: "0.1.3"
+        WHEEL_SHA256: "2763f83655efe1a01fcb761adeee0cea6f76f8ce9af071b2d52aee8958c105a8"
+    image: openhop-txmesh:0.1.3
+    container_name: openhop-txmesh
+    restart: unless-stopped
+
+    environment:
+      - TZ=${TZ:-UTC}
+    # Your private settings (login, node name, IPs). See env.example. Keeps them
+    # out of the compose file, config.json and git.
+    env_file:
+      - ${BASE:-/volume1/docker/openhop-txmesh}/txmesh.env
+
+    volumes:
+      - ${BASE:-/volume1/docker/openhop-txmesh}/config:/config:ro
+      - ${BASE:-/volume1/docker/openhop-txmesh}/data:/data
+
+    networks:
+      txmesh-net:
+        ipv4_address: ${TXMESH_IP:?set TXMESH_IP in txmesh.env}
+
+# An existing Docker network (macvlan, bridge, ...). Compose interpolates these
+# from txmesh.env (deploy.sh passes it with --env-file).
+networks:
+  txmesh-net:
+    external: true
+    name: ${TXMESH_NETWORK:?set TXMESH_NETWORK in txmesh.env}

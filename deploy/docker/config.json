@@ -1,0 +1,10 @@
+{
+  "host": "collector.txme.sh",
+  "port": 443,
+  "transport": "websockets",
+  "tls_enabled": true,
+
+  "channels": [
+    { "idx": 1, "name": "#bot" }
+  ]
+}
