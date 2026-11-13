@@ -14,11 +14,11 @@ services:
     # Your private settings (login, node name, IPs). See env.example. Keeps them
     # out of the compose file, config.json and git.
     env_file:
-      - ${BASE:-/volume1/docker/openhop-txmesh}/txmesh.env
+      - ${BASE:-/volume2/docker/openhop-txmesh}/txmesh.env
 
     volumes:
-      - ${BASE:-/volume1/docker/openhop-txmesh}/config:/config:ro
-      - ${BASE:-/volume1/docker/openhop-txmesh}/data:/data
+      - ${BASE:-/volume2/docker/openhop-txmesh}/config:/config:ro
+      - ${BASE:-/volume2/docker/openhop-txmesh}/data:/data
 
     networks:
       txmesh-net:

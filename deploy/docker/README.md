@@ -29,13 +29,13 @@ Override with `BASE=`, `REPO_URL=` or `BRANCH=` in the environment. The manual s
 On the Docker host (paths below match a Synology-style layout; change as needed):
 
 ```bash
-mkdir -p /volume1/docker/openhop-txmesh/{config,data}
-cp config.json /volume1/docker/openhop-txmesh/config/       # optional: edit channels
-cp env.example /volume1/docker/openhop-txmesh/txmesh.env    # edit login, node name, IPs, network
-chmod 600 /volume1/docker/openhop-txmesh/txmesh.env
-chown 15889 /volume1/docker/openhop-txmesh/data             # the container user
+mkdir -p /volume2/docker/openhop-txmesh/{config,data}
+cp config.json /volume2/docker/openhop-txmesh/config/       # optional: edit channels
+cp env.example /volume2/docker/openhop-txmesh/txmesh.env    # edit login, node name, IPs, network
+chmod 600 /volume2/docker/openhop-txmesh/txmesh.env
+chown 15889 /volume2/docker/openhop-txmesh/data             # the container user
 
-docker compose --env-file /volume1/docker/openhop-txmesh/txmesh.env \
+docker compose --env-file /volume2/docker/openhop-txmesh/txmesh.env \
   -f docker-compose.txmesh.yml up -d --build
 docker logs -f openhop-txmesh 2>&1
 ```

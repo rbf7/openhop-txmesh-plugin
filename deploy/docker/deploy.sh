@@ -5,7 +5,7 @@
 # Overridable: BASE, REPO_URL, BRANCH
 set -euo pipefail
 
-BASE="${BASE:-/volume1/docker/openhop-txmesh}"
+BASE="${BASE:-/volume2/docker/openhop-txmesh}"
 REPO_URL="${REPO_URL:-https://github.com/rbf7/openhop-txmesh-plugin.git}"
 BRANCH="${BRANCH:-main}"
 CONTAINER_UID=15889            # must match the user in the Dockerfile
